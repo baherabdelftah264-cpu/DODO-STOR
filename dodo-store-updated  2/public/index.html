@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#3b1f47">
+  <title>دودو ستور | أجبان وسجق ومنتجات منزلية لحد باب بيتك</title>
+  <meta name="description" content="دودو ستور: اطلب أجبان وسجق ومنتجات منزلية طازة لحد باب بيتك. الدفع عند الاستلام.">
+  <meta property="og:title" content="دودو ستور">
+  <meta property="og:description" content="أجبان وسجق ومنتجات منزلية طازة لحد باب بيتك">
+  <meta property="og:image" content="/logo.jpg">
+  <meta property="og:type" content="website">
+  <link rel="icon" href="/logo.jpg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="announce" class="announce" hidden></div>
+
+  <header class="top">
+    <a class="brand" href="/">
+      <img src="logo.jpg" alt="شعار دودو ستور" width="44" height="44">
+      <span id="shopName">دودو ستور</span>
+    </a>
+    <button id="cartBtn" class="cart-btn" type="button" aria-label="السلة">🛒 <b id="cartCount">0</b></button>
+  </header>
+
+  <section class="hero">
+    <h1>منتجات بيتي طازة لحد باب بيتك</h1>
+    <p id="shipInfo"></p>
+    <input id="search" class="search" type="search" placeholder="🔍 ابحث عن منتج..." autocomplete="off">
+  </section>
+
+  <nav id="cats" class="cats" aria-label="الأقسام"></nav>
+
+  <main>
+    <div id="grid" class="grid"></div>
+    <p id="empty" class="empty" hidden>مفيش منتجات هنا حالياً 🌿</p>
+  </main>
+
+  <footer id="foot" class="foot"></footer>
+
+  <a id="wa" class="wa" target="_blank" rel="noopener" hidden aria-label="واتساب">💬</a>
+
+  <div id="sheet" class="sheet" hidden>
+    <div class="sheet-bg" data-close></div>
+    <div class="sheet-body" id="sheetBody"></div>
+  </div>
+  <div id="toast" class="toast" role="status"></div>
+
+  <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,122 @@
+/* ===== ألوان دودو ستور (من اللوجو) ===== */
+:root {
+  --plum: #3b1f47;
+  --mauve: #b0707f;
+  --mauve-dark: #94596a;
+  --blush: #f7ece9;
+  --cream: #fffaf8;
+  --ink: #2a1a30;
+  --muted: #7a6a80;
+  --line: #ecdad6;
+  --ok: #2e7d4f;
+  --radius: 16px;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0; font-family: "Cairo", Tahoma, system-ui, sans-serif;
+  background: var(--cream); color: var(--ink); line-height: 1.6;
+  -webkit-text-size-adjust: 100%;
+}
+img { max-width: 100%; display: block; }
+button { font: inherit; cursor: pointer; }
+[hidden] { display: none !important; }
+
+/* ===== الهيدر ===== */
+.announce { background: var(--mauve); color: #fff; text-align: center; padding: 6px 12px; font-size: 14px; font-weight: 600; }
+.top {
+  position: sticky; top: 0; z-index: 20; background: var(--plum); color: #fff;
+  display: flex; align-items: center; justify-content: space-between; padding: 8px 14px;
+}
+.brand { display: flex; align-items: center; gap: 10px; color: #fff; text-decoration: none; font-weight: 800; font-size: 19px; }
+.brand img { width: 44px; height: 44px; border-radius: 50%; object-fit: cover; border: 2px solid var(--mauve); }
+.cart-btn { background: var(--mauve); color: #fff; border: 0; border-radius: 999px; padding: 8px 16px; font-size: 16px; font-weight: 700; }
+.cart-btn b { background: #fff; color: var(--plum); border-radius: 999px; padding: 0 8px; margin-inline-start: 4px; }
+
+/* ===== الهيرو والبحث ===== */
+.hero { background: linear-gradient(160deg, var(--blush), #f1dcd8); padding: 22px 16px 18px; text-align: center; }
+.hero h1 { margin: 0 0 4px; font-size: 22px; color: var(--plum); font-weight: 800; }
+.hero p { margin: 0 0 12px; color: var(--muted); font-size: 14px; }
+.search { width: 100%; max-width: 480px; padding: 12px 16px; border-radius: 999px; border: 1px solid var(--line); font: inherit; background: #fff; }
+.search:focus { outline: 2px solid var(--mauve); }
+
+/* ===== الأقسام ===== */
+.cats { display: flex; gap: 8px; overflow-x: auto; padding: 12px 14px; background: var(--cream); position: sticky; top: 60px; z-index: 10; scrollbar-width: none; }
+.cats::-webkit-scrollbar { display: none; }
+.chip { flex: none; border: 1px solid var(--line); background: #fff; color: var(--plum); padding: 7px 16px; border-radius: 999px; font-weight: 600; }
+.chip.on { background: var(--plum); color: #fff; border-color: var(--plum); }
+
+/* ===== المنتجات ===== */
+main { padding: 4px 12px 90px; max-width: 1100px; margin: auto; }
+.grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
+@media (min-width: 640px) { .grid { grid-template-columns: repeat(3, 1fr); } }
+@media (min-width: 960px) { .grid { grid-template-columns: repeat(4, 1fr); } }
+.card { background: #fff; border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; display: flex; flex-direction: column; }
+.pimg {
+  position: relative; aspect-ratio: 1 / 1; background: var(--blush); cursor: pointer;
+  display: flex; align-items: center; justify-content: center; font-size: 52px;
+}
+.pimg::before { content: "🧺"; }
+.pimg img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.cinfo { padding: 10px 12px 12px; display: flex; flex-direction: column; gap: 4px; flex: 1; }
+.pname { font-weight: 700; font-size: 15px; line-height: 1.4; cursor: pointer; }
+.pprice { color: var(--mauve-dark); font-weight: 800; font-size: 17px; }
+.pprice small { color: var(--muted); font-weight: 600; font-size: 12px; }
+.act { margin-top: auto; padding-top: 6px; }
+.btn { border: 0; background: var(--plum); color: #fff; border-radius: 12px; padding: 10px 14px; font-weight: 700; width: 100%; }
+.btn:hover { background: #4d2b5c; }
+.btn:disabled { opacity: .55; cursor: not-allowed; }
+.btn.alt { background: #fff; color: var(--plum); border: 1px solid var(--plum); }
+.stepper { display: flex; align-items: center; justify-content: space-between; background: var(--blush); border-radius: 12px; padding: 3px; }
+.stepper button { width: 38px; height: 38px; border: 0; border-radius: 10px; background: var(--plum); color: #fff; font-size: 20px; font-weight: 700; }
+.stepper span { font-weight: 800; min-width: 30px; text-align: center; }
+.empty { text-align: center; color: var(--muted); padding: 40px 0; }
+
+/* ===== الشيت (السلة وتفاصيل المنتج) ===== */
+.sheet { position: fixed; inset: 0; z-index: 50; display: flex; align-items: flex-end; justify-content: center; }
+.sheet-bg { position: absolute; inset: 0; background: rgba(30, 10, 40, .55); }
+.sheet-body {
+  position: relative; background: #fff; width: 100%; max-width: 560px; max-height: 92vh; overflow-y: auto;
+  border-radius: 22px 22px 0 0; padding: 18px 16px 24px; animation: up .22s ease-out;
+}
+@keyframes up { from { transform: translateY(40px); opacity: 0; } to { transform: none; opacity: 1; } }
+@media (min-width: 700px) { .sheet { align-items: center; } .sheet-body { border-radius: 22px; } }
+.sheet-head { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; }
+.sheet-head h2 { margin: 0; font-size: 20px; color: var(--plum); }
+.x { border: 0; background: var(--blush); width: 36px; height: 36px; border-radius: 50%; font-size: 18px; }
+.big-img { aspect-ratio: 4 / 3; border-radius: var(--radius); overflow: hidden; background: var(--blush); position: relative; display: flex; align-items: center; justify-content: center; font-size: 70px; margin-bottom: 12px; }
+.big-img::before { content: "🧺"; }
+.big-img img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.desc { color: var(--muted); margin: 6px 0 14px; white-space: pre-line; }
+
+.crow { display: grid; grid-template-columns: 56px 1fr auto; gap: 10px; align-items: center; padding: 10px 0; border-bottom: 1px solid var(--line); }
+.crow .thumb { width: 56px; height: 56px; border-radius: 12px; background: var(--blush); overflow: hidden; position: relative; }
+.crow .thumb img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.crow h4 { margin: 0; font-size: 14px; }
+.crow small { color: var(--muted); }
+.crow .line { font-weight: 800; color: var(--mauve-dark); text-align: end; font-size: 14px; }
+.crow .stepper { margin-top: 4px; width: 118px; }
+.crow .stepper button { width: 30px; height: 30px; font-size: 17px; }
+.sum { margin: 14px 0; }
+.sum div { display: flex; justify-content: space-between; padding: 3px 0; }
+.sum .tot { font-weight: 800; font-size: 18px; color: var(--plum); border-top: 1px dashed var(--line); margin-top: 6px; padding-top: 8px; }
+.hint { font-size: 13px; color: var(--muted); margin: 2px 0 8px; }
+.warn { background: #fff3cd; color: #7a5b00; padding: 8px 12px; border-radius: 10px; font-size: 14px; margin-bottom: 10px; }
+.form { display: grid; gap: 8px; margin-bottom: 12px; }
+.form input, .form textarea { width: 100%; padding: 12px; border-radius: 12px; border: 1px solid var(--line); font: inherit; background: var(--cream); }
+.form input:focus, .form textarea:focus { outline: 2px solid var(--mauve); }
+.pay { background: var(--blush); border-radius: 12px; padding: 8px 12px; font-size: 14px; margin-bottom: 10px; }
+.done { text-align: center; padding: 10px 0; }
+.done .tick { font-size: 54px; }
+.done h2 { color: var(--ok); margin: 4px 0; }
+
+/* ===== واتساب والفوتر والتوست ===== */
+.wa { position: fixed; bottom: 18px; inset-inline-start: 16px; width: 54px; height: 54px; border-radius: 50%; background: #25d366; color: #fff; display: flex; align-items: center; justify-content: center; font-size: 26px; text-decoration: none; box-shadow: 0 4px 14px rgba(0,0,0,.25); z-index: 30; }
+.foot { background: var(--plum); color: #e9d9ee; text-align: center; padding: 22px 14px 90px; font-size: 14px; }
+.foot a { color: #fff; font-weight: 700; }
+.toast { position: fixed; bottom: 80px; left: 50%; transform: translate(-50%, 20px); background: var(--plum); color: #fff; padding: 10px 18px; border-radius: 999px; opacity: 0; pointer-events: none; transition: .25s; z-index: 80; max-width: 90%; text-align: center; font-size: 14px; }
+.toast.show { opacity: 1; transform: translate(-50%, 0); }
+
+.form select { width: 100%; padding: 12px; border-radius: 12px; border: 1px solid var(--line); font: inherit; background: var(--cream); color: inherit; }
+.form select:focus { outline: 2px solid var(--mauve); }
+.hint { font-size: 12px; opacity: .8; line-height: 1.6; }

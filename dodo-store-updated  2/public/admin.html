@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="theme-color" content="#3b1f47">
+  <title>لوحة تحكم دودو ستور</title>
+  <link rel="icon" href="/logo.jpg">
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root { --plum:#3b1f47; --mauve:#b0707f; --blush:#f7ece9; --line:#ecdad6; --ink:#2a1a30; --muted:#7a6a80; --ok:#2e7d4f; --red:#c0392b; }
+    * { box-sizing: border-box; }
+    body { margin:0; font-family:"Cairo",Tahoma,system-ui,sans-serif; background:#faf5f3; color:var(--ink); line-height:1.6; }
+    [hidden] { display:none !important; }
+    button { font:inherit; cursor:pointer; }
+    .btn { border:0; border-radius:12px; padding:10px 16px; background:var(--plum); color:#fff; font-weight:700; }
+    .btn.mauve { background:var(--mauve); } .btn.gray { background:#e8dde0; color:var(--plum); } .btn.red { background:var(--red); } .btn.sm { padding:6px 12px; font-size:14px; }
+    .btn:disabled { opacity:.5; }
+    input, select, textarea { width:100%; padding:11px 12px; border:1px solid var(--line); border-radius:12px; font:inherit; background:#fff; margin-bottom:10px; }
+    label { display:block; font-weight:700; font-size:14px; margin-bottom:3px; color:var(--plum); }
+    .hint { color:var(--muted); font-size:13px; margin:-6px 0 10px; }
+
+    #login { max-width:340px; margin:70px auto; background:#fff; border-radius:18px; padding:22px; box-shadow:0 4px 18px #0001; text-align:center; }
+    #login img { width:90px; height:90px; border-radius:50%; margin:0 auto 8px; object-fit:cover; }
+    #loginErr { color:var(--red); min-height:22px; font-size:14px; }
+
+    header { background:var(--plum); color:#fff; padding:10px 14px; display:flex; align-items:center; gap:10px; }
+    header img { width:38px; height:38px; border-radius:50%; object-fit:cover; }
+    header h1 { font-size:17px; margin:0; flex:1; }
+    nav { display:flex; background:#fff; border-bottom:1px solid var(--line); position:sticky; top:0; z-index:5; }
+    nav button { flex:1; border:0; background:none; padding:12px 4px; font-weight:700; color:var(--muted); border-bottom:3px solid transparent; }
+    nav button.on { color:var(--plum); border-bottom-color:var(--mauve); }
+    nav .badge { background:var(--red); color:#fff; border-radius:999px; font-size:12px; padding:0 7px; margin-inline-start:4px; }
+    main { max-width:760px; margin:auto; padding:14px 12px 60px; }
+    .card { background:#fff; border:1px solid var(--line); border-radius:16px; padding:12px; margin-bottom:12px; }
+    .row { display:flex; gap:10px; align-items:center; flex-wrap:wrap; }
+    .grow { flex:1; min-width:0; }
+    .muted { color:var(--muted); font-size:13px; }
+    .tag { display:inline-block; font-size:12px; font-weight:700; padding:1px 9px; border-radius:999px; background:var(--blush); color:var(--plum); }
+    .tag.off { background:#f3d6d2; color:var(--red); }
+    .thumb { width:64px; height:64px; border-radius:12px; background:var(--blush); object-fit:cover; flex:none; display:flex; align-items:center; justify-content:center; font-size:26px; overflow:hidden; }
+    .thumb img { width:100%; height:100%; object-fit:cover; }
+    .chips { display:flex; gap:6px; overflow-x:auto; margin-bottom:12px; }
+    .chip { flex:none; border:1px solid var(--line); background:#fff; padding:5px 14px; border-radius:999px; font-weight:600; }
+    .chip.on { background:var(--plum); color:#fff; }
+    .fab { position:fixed; bottom:18px; inset-inline-start:16px; z-index:6; border-radius:999px; padding:14px 22px; font-size:16px; box-shadow:0 4px 14px #0004; }
+    .modal { position:fixed; inset:0; background:rgba(30,10,40,.55); z-index:20; display:flex; align-items:flex-end; justify-content:center; }
+    .modal > div { background:#fff; width:100%; max-width:520px; max-height:94vh; overflow-y:auto; border-radius:22px 22px 0 0; padding:16px; }
+    @media (min-width:700px) { .modal { align-items:center; } .modal > div { border-radius:22px; } }
+    .uploader { display:flex; gap:12px; align-items:center; margin-bottom:12px; }
+    .uploader .thumb { width:96px; height:96px; font-size:36px; }
+    .toast { position:fixed; bottom:84px; left:50%; transform:translateX(-50%); background:var(--plum); color:#fff; padding:9px 18px; border-radius:999px; z-index:40; font-size:14px; }
+    .items { margin:6px 0; padding-inline-start:20px; }
+  </style>
+</head>
+<body>
+  <div id="login">
+    <img src="/logo.jpg" alt="">
+    <h2>لوحة تحكم دودو ستور</h2>
+    <input id="key" type="password" placeholder="كلمة السر" autocomplete="current-password">
+    <button class="btn" id="loginBtn" style="width:100%" type="button">دخول</button>
+    <p id="loginErr"></p>
+  </div>
+
+  <div id="app" hidden>
+    <header><img src="/logo.jpg" alt=""><h1>لوحة التحكم</h1>
+      <a class="btn mauve sm" href="/" target="_blank" style="text-decoration:none">عرض المتجر</a>
+      <button class="btn gray sm" id="logout" type="button">خروج</button></header>
+    <nav id="tabs"></nav>
+    <main id="view"></main>
+  </div>
+  <script src="admin.js"></script>
+</body>
+</html>
